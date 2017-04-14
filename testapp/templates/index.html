@@ -7,8 +7,8 @@
 
   <ul>
   {% for member in folder_contents %}
-    <li>{{ member.name }}
-      {% if member.tag == "folder" %}/{% endif %}
+    <li>
+      {{ member.name }}{% if member.tag == "folder" %}/{% endif %}
     </li>
   {% empty %}
     <li>No files</li>

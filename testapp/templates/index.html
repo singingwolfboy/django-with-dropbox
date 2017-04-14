@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Dropbox Integration{% endblock %}
+{% block content %}
+<h1>Dropbox Integration</h1>
+{% if user.is_authenticated %}
+  <p>You are {{ user.email }} on Dropbox.
+  <a href="{% url "logout" %}">Logout</a></p>
+{% else %}
+  <p><a href="{% url "social:begin" "dropbox-oauth2" %}">Login with Dropbox</a></p>
+{% endif %}
+{% endblock %}

@@ -3,7 +3,18 @@
 {% block content %}
 <h1>Dropbox Integration</h1>
 {% if user.is_authenticated %}
-  <p>You are {{ user.email }} on Dropbox.
+  <p>You are {{ user.email }} on Dropbox. Here are the files in your app folder:</p>
+
+  <ul>
+  {% for member in folder_contents %}
+    <li>{{ member.name }}
+      {% if member.tag == "folder" %}/{% endif %}
+    </li>
+  {% empty %}
+    <li>No files</li>
+  {% endfor %}
+  </ul>
+
   <a href="{% url "logout" %}">Logout</a></p>
 {% else %}
   <p><a href="{% url "social:begin" "dropbox-oauth2" %}">Login with Dropbox</a></p>
